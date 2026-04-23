@@ -4,7 +4,7 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 prices = pd.read_csv("prices.csv", index_col="Date", parse_dates=True)
-returns = prices.pct_change().dropna()
+returns = prices.pct_change().iloc[1:]
 
 names_df = pd.read_csv("names.csv")
 TICKER_NAMES = dict(zip(names_df["Ticker"], names_df["Name"]))
