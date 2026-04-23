@@ -65,19 +65,21 @@ col1, col2 = st.columns(2)
 with col1:
     st.subheader("60 Days")
     st.caption(range_3mo)
-    st.dataframe(table_3mo)
-    table_3mo,
-    column_config={
-            "Volatility": st.column_config.NumberColumn(format="percent"),
+    st.dataframe(
+        table_3mo,
+        column_config={
+                "Volatility": st.column_config.NumberColumn(format="percent"),
         },
+    )
  #   st.bar_chart(chart_3mo, horizontal=True, height=400)
 
 with col2:
     st.subheader("120 Days")
     st.caption(range_6mo)
-    st.dataframe(table_6mo)
-    table_6mo,
-    column_config={
-            "Volatility": st.column_config.NumberColumn(format="percent"),
+    st.dataframe(
+        table_6mo,
+        column_config={
+                "Volatility": st.column_config.NumberColumn(format="percent"),
         },
+    )    
 #    st.bar_chart(chart_6mo, horizontal=True, height=400)
