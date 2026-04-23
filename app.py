@@ -24,7 +24,7 @@ dates_6mo = returns.tail(120).index
 range_3mo = f"{dates_3mo.min().date()} to {dates_3mo.max().date()}"
 range_6mo = f"{dates_6mo.min().date()} to {dates_6mo.max().date()}"
 
-TOPN = 30
+TOPN = 31
 
 corr_3mo = corr_3mo.head(TOPN)
 corr_6mo = corr_6mo.head(TOPN)
