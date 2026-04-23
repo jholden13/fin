@@ -24,6 +24,19 @@ dates_6mo = returns.tail(120).index
 range_3mo = f"{dates_3mo.min().date()} to {dates_3mo.max().date()}"
 range_6mo = f"{dates_6mo.min().date()} to {dates_6mo.max().date()}"
 
+returns_60 = returns.tail(60)
+returns_120 = returns.tail(120)
+
+overlap_60 = returns_60.apply(
+    lambda col: (col.notna() & returns_60[target].notna()).sum()
+)
+overlap_120 = returns_120.apply(
+    lambda col: (col.notna() & returns_120[target].notna()).sum()
+)
+
+corr_3mo = corr_3mo[overlap_60 >= 60]
+corr_6mo = corr_6mo[overlap_120 >= 120]
+
 TOPN = 31
 
 corr_3mo = corr_3mo.head(TOPN)
