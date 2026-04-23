@@ -32,14 +32,20 @@ corr_6mo = corr_6mo.drop(target)
 corr_3mo = corr_3mo.head(TOPN)
 corr_6mo = corr_6mo.head(TOPN)
 
+vol_3mo = returns.tail(60).std() * (252 ** 0.5)
+vol_6mo = returns.tail(120).std() * (252 ** 0.5)
+
 table_3mo = pd.DataFrame({
     "Name": corr_3mo.index.map(TICKER_NAMES),
     "Correlation": corr_3mo.values,
+    "Volatility": vol_3mo.reindex(corr_3mo.index).values,
 }, index=corr_3mo.index)
 
 table_6mo = pd.DataFrame({
     "Name": corr_6mo.index.map(TICKER_NAMES),
     "Correlation": corr_6mo.values,
+    "Volatility": vol_6mo.reindex(corr_6mo.index).values,
+}, index=corr_6mo.index)
 }, index=corr_6mo.index)
 
 chart_3mo = corr_3mo.rename("correlation").to_frame()
