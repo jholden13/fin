@@ -46,7 +46,6 @@ table_6mo = pd.DataFrame({
     "Correlation": corr_6mo.values,
     "Volatility": vol_6mo.reindex(corr_6mo.index).values,
 }, index=corr_6mo.index)
-}, index=corr_6mo.index)
 
 chart_3mo = corr_3mo.rename("correlation").to_frame()
 chart_6mo = corr_6mo.rename("correlation").to_frame()
