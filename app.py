@@ -18,6 +18,12 @@ target = st.selectbox("Pick target stock", tickers)
 corr_3mo = returns.tail(60).corr()[target].sort_values(ascending=False)
 corr_6mo = returns.tail(120).corr()[target].sort_values(ascending=False)
 
+dates_3mo = returns.tail(60).index
+dates_6mo = returns.tail(120).index
+
+range_3mo = f"{dates_3mo.min().date()} to {dates_3mo.max().date()}"
+range_6mo = f"{dates_6mo.min().date()} to {dates_6mo.max().date()}"
+
 TOPN = 30
 
 corr_3mo = corr_3mo.drop(target)
@@ -43,10 +49,12 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("60 Day Correlation")
+    st.caption(range_3mo)
     st.dataframe(table_3mo)
  #   st.bar_chart(chart_3mo, horizontal=True, height=400)
 
 with col2:
     st.subheader("120 Day Correlation")
+    st.caption(range_6mo)
     st.dataframe(table_6mo)
 #    st.bar_chart(chart_6mo, horizontal=True, height=400)
