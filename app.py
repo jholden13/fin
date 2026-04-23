@@ -26,9 +26,6 @@ range_6mo = f"{dates_6mo.min().date()} to {dates_6mo.max().date()}"
 
 TOPN = 30
 
-corr_3mo = corr_3mo.drop(target)
-corr_6mo = corr_6mo.drop(target)
-
 corr_3mo = corr_3mo.head(TOPN)
 corr_6mo = corr_6mo.head(TOPN)
 
